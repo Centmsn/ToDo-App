@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,wBAAwB,AAAC,CACvB,UAAU,CAAE,IAAI,CAChB,MAAM,CAAE,IAAI,CAEZ,gBAAgB,CAAE,UAAU,CAC7B",
+    "sources": [
+        "../sass/removednotes.scss"
+    ],
+    "names": [],
+    "file": "removednotes.css"
+}

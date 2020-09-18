@@ -1,0 +1,39 @@
+.note {
+  flex-basis: 30%;
+  min-height: 100px;
+
+  margin-top: 5vmin;
+  padding: 10px;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  background-color: coral;
+
+  &__top-bar {
+    flex-basis: 100%;
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__date {
+    flex-basis: 30%;
+  }
+
+  &__delete {
+    flex-basis: 5%;
+  }
+
+  &__body {
+    flex-basis: 100%;
+  }
+
+  &__title {
+    text-align: center;
+  }
+
+  &__text {
+    text-align: justify;
+  }
+}
