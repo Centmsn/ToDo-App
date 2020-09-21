@@ -5,5 +5,21 @@
   height: 78vh;
   transition: 500ms;
   transform: translateY(-100vh);
-  background-color: rgba(194, 23, 23, 0.616);
+  background-color: rgba(0, 0, 0, 0.705);
+
+  display: flex;
+  justify-content: center;
+
+  &__options-container {
+    flex-basis: 35%;
+
+    text-align: center;
+    background-color: white;
+    color: black;
+  }
+
+  &__box {
+    width: 100%;
+    margin-top: 10vmin;
+  }
 }

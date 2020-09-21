@@ -7,13 +7,38 @@
   height: 78vh;
   transition: 500ms;
   transform: translateY(-100vh);
-  background-color: rgba(255, 255, 255, 0.616);
+  background-color: rgba(0, 0, 0, 0.705);
+
+  display: flex;
+  flex-wrap: wrap;
 
   &__form-container {
     height: 100%;
     width: 40%;
     margin: 0 auto;
 
-    // background-color: rgba(255, 255, 255, 0.616);
+    background-color: white;
+  }
+
+  &__form-field {
+    flex-basis: 100%;
+  }
+
+  &__form-input {
+    display: block;
+    margin: 0 auto;
+    width: 75%;
+    font-size: 1.5rem;
+  }
+
+  &__form-input--large {
+    height: 250px;
+    resize: none;
+  }
+
+  &__form-label {
+    width: 100%;
+    display: block;
+    text-align: center;
   }
 }

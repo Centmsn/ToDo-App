@@ -1,2 +1,2 @@
-.settings{position:absolute;top:10vh;width:100vw;height:78vh;-webkit-transition:500ms;transition:500ms;-webkit-transform:translateY(-100vh);transform:translateY(-100vh);background-color:rgba(194,23,23,0.616)}
+.settings{position:absolute;top:10vh;width:100vw;height:78vh;-webkit-transition:500ms;transition:500ms;-webkit-transform:translateY(-100vh);transform:translateY(-100vh);background-color:rgba(0,0,0,0.705);display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}.settings__options-container{-ms-flex-preferred-size:35%;flex-basis:35%;text-align:center;background-color:white;color:black}.settings__box{width:100%;margin-top:10vmin}
 /*# sourceMappingURL=settings.css.map */
