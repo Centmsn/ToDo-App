@@ -33,13 +33,15 @@ class NoteCreate extends Component {
             className="note-create__form-input note-create__form-input--large"
           />
         </label>
-        {field.meta.touched ? <p>{field.meta.error}</p> : null}
+        {field.meta.touched ? (
+          <p className="note-create__error">{field.meta.error}</p>
+        ) : null}
       </>
     );
   };
 
   renderFormInput = (field) => {
-    console.log(field);
+    console.log(field.meta.error);
     return (
       <>
         <label className="note-create__form-label">
@@ -51,7 +53,9 @@ class NoteCreate extends Component {
             autoComplete="off"
           />
         </label>
-        {field.meta.touched ? <p>{field.meta.error}</p> : null}
+        {field.meta.touched ? (
+          <p className="note-create__error">{field.meta.error}</p>
+        ) : null}
       </>
     );
   };
@@ -61,8 +65,8 @@ class NoteCreate extends Component {
       <div className="note-create" style={this.handleVisibility()}>
         <div className="note-create__form-container">
           <form onSubmit={this.props.handleSubmit(this.handleSubmit)}>
-            <div className="note-create__form-field">
-              Color:
+            <p className="note-create__title">Select note color</p>
+            <div className="note-create__form-field note-create__form-field--flex">
               <Field
                 name="color"
                 component={this.renderFormInput}
@@ -72,14 +76,16 @@ class NoteCreate extends Component {
               />
               <Field
                 name="color"
-                component="input"
+                component={this.renderFormInput}
                 type="radio"
+                label="Green"
                 value="rgb(99, 170, 84)"
               />
               <Field
                 name="color"
-                component="input"
+                component={this.renderFormInput}
                 type="radio"
+                label="Yellow"
                 value="rgb(252, 219, 111)"
               />
             </div>
@@ -98,7 +104,9 @@ class NoteCreate extends Component {
                 label="Note description"
               />
             </div>
-            <button type="submit">Create</button>
+            <button type="submit" className="button">
+              Create note
+            </button>
           </form>
         </div>
       </div>
