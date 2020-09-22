@@ -24,6 +24,9 @@ const Menu = ({
   showSettings,
   hideSettings,
 }) => {
+  const iconStyle =
+    createNoteVisiblity === "SHOW" ? { transform: "rotate(45deg)" } : null;
+
   const handleCreateNoteVisiblity = () => {
     if (createNoteVisiblity === "HIDE") {
       showCreateNote();
@@ -67,11 +70,7 @@ const Menu = ({
         <Link to="/" className="menu__link" onClick={handleCreateNoteVisiblity}>
           <FontAwesomeIcon
             icon={faPlus}
-            style={
-              createNoteVisiblity === "SHOW"
-                ? { transform: "rotate(45deg)" }
-                : null
-            }
+            style={iconStyle}
             className="menu__icon"
           />
         </Link>

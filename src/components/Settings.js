@@ -14,26 +14,18 @@ class Settings extends Component {
     }
   };
 
-  displayDarkMode = (formProps) => {
+  renderFormField = (field) => {
     return (
-      <>
-        <label htmlFor="darkmode">DarkMode:</label>
-        <input {...formProps.input} type="checkbox" />
-      </>
+      <label>
+        {field.label}
+        <input {...field.input} type={field.type} />
+      </label>
     );
   };
 
-  displayFontSize = (formProps) => (
-    <>
-      <label htmlFor="darkmode">Font size:</label>
-      <input {...formProps} type="radio" name="fontSize" value="small" />
-    </>
-  );
-
   handleSubmit = (values) => {
-    console.log(values.darkMode, values.fontSize);
-    localStorage.setItem("darkmode", `${values.darkMode}`);
-    localStorage.setItem("fontsize", `${values.fontSize}`);
+    // localStorage.setItem("darkmode", `${values.darkMode}`);
+    // localStorage.setItem("fontsize", `${values.fontSize}`);
 
     this.props.hideSettings();
   };
@@ -44,43 +36,40 @@ class Settings extends Component {
         <div className="settings__options-container">
           <form onSubmit={this.props.handleSubmit(this.handleSubmit)}>
             <div className="settings__box">
-              <label htmlFor="darkmode">
-                DarkMode
-                <Field
-                  name="darkMode"
-                  component="input"
-                  type="checkbox"
-                  id="darkmode"
-                  checked={this.props.darkmode}
-                />
-              </label>
+              <Field
+                name="darkMode"
+                component={this.renderFormField}
+                type="checkbox"
+                label="DarkMode"
+              />
             </div>
             <div className="settings__box">
-              <label>
-                Font size
-                <Field
-                  name="fontSize"
-                  component="input"
-                  type="radio"
-                  value="small"
-                />
-                <Field
-                  name="fontSize"
-                  component="input"
-                  type="radio"
-                  value="normal"
-                />
-                <Field
-                  name="fontSize"
-                  component="input"
-                  type="radio"
-                  value="large"
-                />
-              </label>
+              Font size
+              <Field
+                name="fontSize"
+                component={this.renderFormField}
+                type="radio"
+                value="small"
+                label="small"
+              />
+              <Field
+                name="fontSize"
+                component={this.renderFormField}
+                type="radio"
+                value="normal"
+                label="normal"
+              />
+              <Field
+                name="fontSize"
+                component={this.renderFormField}
+                type="radio"
+                value="large"
+                label="large"
+              />
             </div>
 
             <div className="settings__box">
-              <button>Save</button>
+              <button type="submit">Save</button>
             </div>
           </form>
         </div>
@@ -99,7 +88,8 @@ const mapStateToProps = (state) => {
 };
 
 const validate = () => {
-  console.log("abc");
+  const errors = {};
+  return errors;
 };
 
 const WrappedSettings = reduxForm({

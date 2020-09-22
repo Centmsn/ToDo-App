@@ -30,6 +30,7 @@ export const createNote = (values) => {
       desc: values.description,
       color: values.color,
       id: values.id,
+      date: new Date().toLocaleString(),
     },
   };
 };
@@ -44,5 +45,25 @@ export const deleteNote = (index) => {
 export const incrementId = () => {
   return {
     type: "INCREMENT",
+  };
+};
+
+export const moveToRemoved = (values) => {
+  return {
+    type: "MOVE_TO_REMOVED",
+    payload: {
+      title: values.title,
+      desc: values.desc,
+    },
+  };
+};
+
+export const moveToDone = (values) => {
+  return {
+    type: "MOVE_TO_DONE",
+    payload: {
+      title: values.title,
+      desc: values.desc,
+    },
   };
 };

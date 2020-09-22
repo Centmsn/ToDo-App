@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "AAAA,AAAA,wBAAwB,AAAC,CACvB,UAAU,CAAE,IAAI,CAChB,MAAM,CAAE,IAAI,CAEZ,gBAAgB,CAAE,UAAU,CAC7B",
+    "mappings": "AAAA,AAAA,kBAAkB,AAAC,CACjB,UAAU,CAAE,IAAI,CAChB,MAAM,CAAE,IAAI,CAEZ,OAAO,CAAE,IAAI,CAMd,AAJE,AAAD,uBAAM,AAAC,CACL,UAAU,CAAE,GAAG,CACf,MAAM,CAAE,IAAI,CACb",
     "sources": [
         "../sass/removednotes.scss"
     ],

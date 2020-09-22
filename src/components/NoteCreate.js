@@ -15,12 +15,14 @@ class NoteCreate extends Component {
   };
 
   handleSubmit = (values) => {
-    const params = { ...values, id: this.props.id };
-    this.props.incrementId();
+    const { incrementId, reset, createNote, hideCreateNote, id } = this.props;
 
-    this.props.createNote(params);
-    this.props.reset();
-    this.props.hideCreateNote();
+    const params = { ...values, id: id };
+    incrementId();
+
+    createNote(params);
+    reset();
+    hideCreateNote();
   };
 
   renderFormTextarea = (field) => {
@@ -41,7 +43,6 @@ class NoteCreate extends Component {
   };
 
   renderFormInput = (field) => {
-    console.log(field.meta.error);
     return (
       <>
         <label className="note-create__form-label">

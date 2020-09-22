@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { deleteNote } from "../actions";
+import { deleteNote, moveToDone, moveToRemoved } from "../actions";
 import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -15,27 +15,34 @@ const Note = (props) => {
     color: props.color === "rgb(209, 63, 63)" ? "white" : "black",
   };
 
-  const handleNoteDelete = () => {
+  const handleNoteDelete = (type) => {
     props.deleteNote(noteRef.current.dataset.key);
+    const values = { title: props.title, desc: props.description };
+
+    if (type === "DONE") {
+      props.moveToDone(values);
+    } else {
+      props.moveToRemoved(values);
+    }
   };
 
   return (
     <div className="note" data-key={props.id} ref={noteRef} style={style}>
       <div className="note__top-bar">
-        <div className="note__date">{`Created: ${new Date().toLocaleString()}`}</div>
+        <div className="note__date">{`Created: ${props.date}`}</div>
 
         <div className="note__done">
           <FontAwesomeIcon
             icon={faCheck}
             className="note__icon"
-            onClick={handleNoteDelete}
+            onClick={() => handleNoteDelete("DONE")}
           />
         </div>
         <div className="note__delete">
           <FontAwesomeIcon
             icon={faTimes}
             className="note__icon"
-            onClick={handleNoteDelete}
+            onClick={() => handleNoteDelete("REMOVED")}
           />
         </div>
       </div>
@@ -47,4 +54,4 @@ const Note = (props) => {
   );
 };
 
-export default connect(null, { deleteNote })(Note);
+export default connect(null, { deleteNote, moveToDone, moveToRemoved })(Note);
