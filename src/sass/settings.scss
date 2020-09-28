@@ -1,3 +1,5 @@
+@import "./components/button";
+
 .settings {
   position: absolute;
   top: 10vh;
@@ -21,5 +23,24 @@
   &__box {
     width: 100%;
     margin-top: 10vmin;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  &__label {
+    flex-basis: 33%;
+    font-size: 1.25rem;
+  }
+
+  &__title {
+    flex-basis: 100%;
+    margin-bottom: 5vmin;
+    font-size: 1.5rem;
+  }
+
+  &__input {
+    display: block;
+    margin: 0 auto;
   }
 }

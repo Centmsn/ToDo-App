@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Switch, Route } from "react-router";
+import { Switch, Route } from "react-router";
 
 import TopBar from "./TopBar";
 import Menu from "./Menu";
@@ -17,8 +17,8 @@ function App() {
         <Route path="/deleted" component={RemovedNotes} />
         <Route path="/" component={NotesContainer} />
       </Switch>
-      <Route path="/" component={NoteCreate} />
-      <Route path="/" component={Settings} />
+      <NoteCreate component={NoteCreate} />
+      <Settings component={Settings} />
       <Menu />
     </div>
   );

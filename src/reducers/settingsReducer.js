@@ -3,7 +3,7 @@ const INITIAL_STATE = { darkmode: false, fontSize: "normal" };
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case "SWITCH_MODE":
-      return { ...state, darkmode: !state.darkmode };
+      return { ...state, darkmode: action.payload };
 
     case "SWITCH_SIZE":
       return { ...state, fontSize: action.payload };

@@ -61,9 +61,9 @@ const Note = (props) => {
         </div>
       </div>
       <div className="note__body">
-        {/* <div className="note__title" style={{ fontSize: displayFont() }}>
+        <div className="note__title" style={{ fontSize: displayFont() }}>
           <h3>{props.title}</h3>
-        </div> */}
+        </div>
         <div className="note__text">
           <p>{props.description}</p>
         </div>

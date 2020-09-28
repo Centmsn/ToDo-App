@@ -16,9 +16,9 @@ class Settings extends Component {
 
   renderFormField = (field) => {
     return (
-      <label>
+      <label className="settings__label">
         {field.label}
-        <input {...field.input} type={field.type} />
+        <input {...field.input} type={field.type} className="settings__input" />
       </label>
     );
   };
@@ -26,7 +26,7 @@ class Settings extends Component {
   handleSubmit = (values) => {
     // localStorage.setItem("darkmode", `${values.darkMode}`);
     // localStorage.setItem("fontsize", `${values.fontSize}`);
-    this.props.switchDarkMode();
+    this.props.switchDarkMode(values.darkMode);
     this.props.switchFontSize(values.fontSize);
     this.props.hideSettings();
   };
@@ -39,6 +39,7 @@ class Settings extends Component {
         <div className="settings__options-container" style={style}>
           <form onSubmit={this.props.handleSubmit(this.handleSubmit)}>
             <div className="settings__box">
+              <p className="settings__title">Turn off / on the lights</p>
               <Field
                 name="darkMode"
                 component={this.renderFormField}
@@ -47,7 +48,7 @@ class Settings extends Component {
               />
             </div>
             <div className="settings__box">
-              Font size
+              <p className="settings__title">Select font size</p>
               <Field
                 name="fontSize"
                 component={this.renderFormField}
@@ -72,7 +73,9 @@ class Settings extends Component {
             </div>
 
             <div className="settings__box">
-              <button type="submit">Save</button>
+              <button type="submit" className="button">
+                Save
+              </button>
             </div>
           </form>
         </div>

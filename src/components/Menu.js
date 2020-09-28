@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
@@ -23,6 +23,7 @@ const Menu = ({
   hideCreateNote,
   showSettings,
   hideSettings,
+  darkmode,
 }) => {
   const iconStyle =
     createNoteVisiblity === "SHOW" ? { transform: "rotate(45deg)" } : null;
@@ -50,10 +51,12 @@ const Menu = ({
     hideCreateNote();
   };
 
+  const style = darkmode ? { backgroundColor: "lightgray" } : null;
+
   return (
-    <div className="menu">
+    <div className="menu" style={style}>
       <div className="menu__button menu__button--left">
-        <NavLink to="/" className="menu__link" onClick={hideWindows}>
+        <NavLink to="/" className="menu__link" onClick={hideWindows} exact>
           <FontAwesomeIcon icon={faHome} />
         </NavLink>
       </div>
@@ -66,9 +69,9 @@ const Menu = ({
           <FontAwesomeIcon icon={faCogs} />
         </NavLink>
       </div>
-      <div className="menu__button menu__button--center">
+      <div className="menu__button menu__button--center" style={style}>
         <NavLink
-          to="/"
+          to="/CreateNote"
           className="menu__link"
           onClick={handleCreateNoteVisiblity}
         >
@@ -92,6 +95,7 @@ const mapStateToProps = (state) => {
   return {
     createNoteVisiblity: state.notesMenu,
     settingsVisibility: state.settings,
+    darkmode: state.settingsList.darkmode,
   };
 };
 

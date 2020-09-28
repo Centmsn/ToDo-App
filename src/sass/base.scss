@@ -5,8 +5,7 @@
 }
 
 body {
-  // overflow: hidden;
-  // color: rgb(209, 63, 63);
+  overflow: hidden;
   font-family: "Comic Neue", cursive;
 }
 .app-container {
@@ -16,4 +15,8 @@ body {
 
   display: flex;
   flex-wrap: wrap;
+}
+
+.active {
+  color: white;
 }

@@ -11,16 +11,21 @@ const RemovedNotes = ({ removed, done, darkmode }) => {
       </li>
     ));
 
-  const style = darkmode ? { backgroundColor: "black" } : null;
+  const styleContainer = darkmode ? { backgroundColor: "black" } : null;
+  const styleTitle = darkmode ? { color: "white" } : null;
 
   return (
-    <div className="removed-container" style={style}>
+    <div className="removed-container" style={styleContainer}>
       <div className="removed-container__box">
-        <p className="removed-container__title">Completed tasks</p>
+        <p className="removed-container__title" style={styleTitle}>
+          Completed tasks
+        </p>
         <ul className="list">{renderNotes(done)}</ul>
       </div>
       <div className="removed-container__box">
-        <p className="removed-container__title">Removed tasks</p>
+        <p className="removed-container__title" style={styleTitle}>
+          Removed tasks
+        </p>
         <ul className="list">{renderNotes(removed)}</ul>
       </div>
     </div>

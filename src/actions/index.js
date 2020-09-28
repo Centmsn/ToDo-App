@@ -22,9 +22,10 @@ export const hideSettings = () => {
   };
 };
 
-export const switchDarkMode = () => {
+export const switchDarkMode = (value) => {
   return {
     type: "SWITCH_MODE",
+    payload: value,
   };
 };
 

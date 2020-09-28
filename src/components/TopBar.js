@@ -1,10 +1,13 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import { connect } from "react-redux";
 
 import "../css/topbar.css";
 
-const TopBar = () => {
+const TopBar = ({ darkmode }) => {
   const [currentTime, setCurrentTime] = useState(null);
+
+  const style = darkmode ? { backgroundColor: "lightgray" } : null;
 
   useEffect(() => {
     setInterval(() => {
@@ -23,11 +26,17 @@ const TopBar = () => {
   }, []);
 
   return (
-    <div className="top-bar">
+    <div className="top-bar" style={style}>
       <div className="top-bar__date">{new Date().toLocaleDateString()}</div>
       <div className="top-bar__hour">{currentTime}</div>
     </div>
   );
 };
 
-export default TopBar;
+const mapStateToProps = (state) => {
+  return {
+    darkmode: state.settingsList.darkmode,
+  };
+};
+
+export default connect(mapStateToProps, null)(TopBar);
