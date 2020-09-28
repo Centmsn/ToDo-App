@@ -22,6 +22,19 @@ export const hideSettings = () => {
   };
 };
 
+export const switchDarkMode = () => {
+  return {
+    type: "SWITCH_MODE",
+  };
+};
+
+export const switchFontSize = (size) => {
+  return {
+    type: "SWITCH_SIZE",
+    payload: size,
+  };
+};
+
 export const createNote = (values) => {
   return {
     type: "CREATE",

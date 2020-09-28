@@ -62,9 +62,11 @@ class NoteCreate extends Component {
   };
 
   render() {
+    const style = this.props.darkmode ? { backgroundColor: "gray" } : null;
+
     return (
       <div className="note-create" style={this.handleVisibility()}>
-        <div className="note-create__form-container">
+        <div className="note-create__form-container" style={style}>
           <form onSubmit={this.props.handleSubmit(this.handleSubmit)}>
             <p className="note-create__title">Select note color</p>
             <div className="note-create__form-field note-create__form-field--flex">
@@ -116,7 +118,11 @@ class NoteCreate extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { isVisible: state.notesMenu, id: state.id };
+  return {
+    isVisible: state.notesMenu,
+    id: state.id,
+    darkmode: state.settingsList.darkmode,
+  };
 };
 
 const validate = (values) => {

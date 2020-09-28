@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
-import { hideSettings } from "../actions";
+import { hideSettings, switchDarkMode, switchFontSize } from "../actions";
 
 import "../css/settings.css";
 
@@ -26,14 +26,17 @@ class Settings extends Component {
   handleSubmit = (values) => {
     // localStorage.setItem("darkmode", `${values.darkMode}`);
     // localStorage.setItem("fontsize", `${values.fontSize}`);
-
+    this.props.switchDarkMode();
+    this.props.switchFontSize(values.fontSize);
     this.props.hideSettings();
   };
 
   render() {
+    const style = this.props.darkmode ? { backgroundColor: "gray" } : null;
+
     return (
       <div className="settings" style={this.handleVisibility()}>
-        <div className="settings__options-container">
+        <div className="settings__options-container" style={style}>
           <form onSubmit={this.props.handleSubmit(this.handleSubmit)}>
             <div className="settings__box">
               <Field
@@ -81,9 +84,7 @@ class Settings extends Component {
 const mapStateToProps = (state) => {
   return {
     isVisible: state.settings,
-    initialValues: {
-      darkMode: false,
-    },
+    darkmode: state.settingsList.darkmode,
   };
 };
 
@@ -98,4 +99,8 @@ const WrappedSettings = reduxForm({
   validate,
 })(Settings);
 
-export default connect(mapStateToProps, { hideSettings })(WrappedSettings);
+export default connect(mapStateToProps, {
+  hideSettings,
+  switchDarkMode,
+  switchFontSize,
+})(WrappedSettings);

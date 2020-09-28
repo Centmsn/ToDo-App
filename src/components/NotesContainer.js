@@ -30,10 +30,7 @@ const NotesContainer = ({ notesList, darkmode }) => {
 const mapStateToProps = (state) => {
   return {
     notesList: state.notesList,
-    darkmode:
-      state.form.settings === undefined
-        ? false
-        : state.form.settings.values.darkMode,
+    darkmode: state.settingsList.darkmode,
   };
 };
 

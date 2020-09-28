@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
@@ -53,32 +53,36 @@ const Menu = ({
   return (
     <div className="menu">
       <div className="menu__button menu__button--left">
-        <Link to="/" className="menu__link" onClick={hideWindows}>
+        <NavLink to="/" className="menu__link" onClick={hideWindows}>
           <FontAwesomeIcon icon={faHome} />
-        </Link>
+        </NavLink>
       </div>
       <div className="menu__button">
-        <Link
+        <NavLink
           to="/settings"
           className="menu__link"
           onClick={handleSettingsVisiblity}
         >
           <FontAwesomeIcon icon={faCogs} />
-        </Link>
+        </NavLink>
       </div>
       <div className="menu__button menu__button--center">
-        <Link to="/" className="menu__link" onClick={handleCreateNoteVisiblity}>
+        <NavLink
+          to="/"
+          className="menu__link"
+          onClick={handleCreateNoteVisiblity}
+        >
           <FontAwesomeIcon
             icon={faPlus}
             style={iconStyle}
             className="menu__icon"
           />
-        </Link>
+        </NavLink>
       </div>
       <div className="menu__button">
-        <Link to="/deleted" className="menu__link" onClick={hideWindows}>
+        <NavLink to="/deleted" className="menu__link" onClick={hideWindows}>
           <FontAwesomeIcon icon={faTrashAlt} />
-        </Link>
+        </NavLink>
       </div>
     </div>
   );

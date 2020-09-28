@@ -10,9 +10,23 @@ import "../css/note.css";
 const Note = (props) => {
   const noteRef = useRef();
 
+  const displayFont = () => {
+    switch (props.fontSize) {
+      case "small":
+        return "9px";
+
+      case "normal":
+        return "15px";
+
+      case "large":
+        return "22px";
+    }
+  };
+
   const style = {
     backgroundColor: props.color,
     color: props.color === "rgb(209, 63, 63)" ? "white" : "black",
+    fontSize: displayFont(),
   };
 
   const handleNoteDelete = (type) => {
@@ -47,11 +61,25 @@ const Note = (props) => {
         </div>
       </div>
       <div className="note__body">
-        <div className="note__title">{props.title}</div>
-        <div className="note__text">{props.description}</div>
+        {/* <div className="note__title" style={{ fontSize: displayFont() }}>
+          <h3>{props.title}</h3>
+        </div> */}
+        <div className="note__text">
+          <p>{props.description}</p>
+        </div>
       </div>
     </div>
   );
 };
 
-export default connect(null, { deleteNote, moveToDone, moveToRemoved })(Note);
+const mapStateToProps = (state) => {
+  return {
+    fontSize: state.settingsList.fontSize,
+  };
+};
+
+export default connect(mapStateToProps, {
+  deleteNote,
+  moveToDone,
+  moveToRemoved,
+})(Note);
