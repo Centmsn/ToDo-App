@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import { createNote } from "../actions";
 
 import Note from "./Note";
 
@@ -17,6 +16,7 @@ const NotesContainer = ({ notesList, darkmode }) => {
         id={note.id}
         color={note.color}
         date={note.date}
+        key={note.id}
       />
     ));
 

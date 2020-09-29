@@ -20,6 +20,8 @@ const Note = (props) => {
 
       case "large":
         return "22px";
+      default:
+        return "15px";
     }
   };
 

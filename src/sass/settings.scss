@@ -1,4 +1,5 @@
 @import "./components/button";
+@import "./helpers/mixins";
 
 .settings {
   position: absolute;
@@ -18,6 +19,15 @@
     text-align: center;
     background-color: white;
     color: black;
+
+    @include mq("large") {
+      flex-basis: 90%;
+    }
+
+    @include mq("small") {
+      flex-basis: 100%;
+      background-color: whitesmoke;
+    }
   }
 
   &__box {

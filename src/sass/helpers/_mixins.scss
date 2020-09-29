@@ -1,0 +1,10 @@
+@import "./variables";
+
+@mixin mq($breakpoint) {
+  $size: map-get($breakpoints, $breakpoint);
+  @if ($size) {
+    @media screen and #{$size} {
+      @content;
+    }
+  }
+}

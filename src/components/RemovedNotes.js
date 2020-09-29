@@ -4,10 +4,10 @@ import "../css/removednotes.css";
 
 const RemovedNotes = ({ removed, done, darkmode }) => {
   const renderNotes = (list) =>
-    list.map((notes) => (
-      <li className="list__item">
-        <h4 className="list__title">{notes.title}</h4>
-        <p>{notes.desc}</p>
+    list.map((note) => (
+      <li className="list__item" key={note.title}>
+        <h4 className="list__title">{note.title}</h4>
+        <p>{note.desc}</p>
       </li>
     ));
 
