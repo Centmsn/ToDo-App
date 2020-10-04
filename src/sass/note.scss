@@ -32,6 +32,10 @@
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid black;
+
+    @include mq("small") {
+      font-size: 1.25rem;
+    }
   }
 
   &__date {

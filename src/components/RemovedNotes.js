@@ -2,15 +2,29 @@ import React from "react";
 import { connect } from "react-redux";
 import "../css/removednotes.css";
 
-const RemovedNotes = ({ removed, done, darkmode }) => {
+const RemovedNotes = ({ removed, done, darkmode, font }) => {
   const renderNotes = (list) =>
     list.map((note) => (
       <li className="list__item" key={note.title}>
-        <h4 className="list__title">{note.title}</h4>
-        <p>{note.desc}</p>
+        <h4 className="list__title" style={{ fontSize: styleText() }}>
+          {note.title}
+        </h4>
+        <p style={{ fontSize: styleText() }}>{note.desc}</p>
       </li>
     ));
 
+  const styleText = () => {
+    switch (font) {
+      case "small":
+        return "11px";
+      case "normal":
+        return "15px";
+      case "large":
+        return "18px";
+      default:
+        return "12px";
+    }
+  };
   const styleContainer = darkmode ? { backgroundColor: "black" } : null;
   const styleTitle = darkmode ? { color: "white" } : null;
 
@@ -37,6 +51,7 @@ const mapStateToProps = (state) => {
     removed: state.removedNotes,
     done: state.doneNotes,
     darkmode: state.settingsList.darkmode,
+    font: state.settingsList.fontSize,
   };
 };
 
