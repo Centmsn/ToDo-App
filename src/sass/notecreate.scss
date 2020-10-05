@@ -65,11 +65,18 @@
     display: block;
     text-align: center;
     font-size: 1.25rem;
+
+    @include mq("small") {
+      margin-top: 20px;
+    }
   }
 
   &__error {
     position: absolute;
     left: 35%;
     color: red;
+
+    @include mq("small") {
+    }
   }
 }

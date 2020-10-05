@@ -1,11 +1,13 @@
+import { CREATE, DELETE } from "../actions";
+
 const INITIAL_STATE = [];
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case "CREATE":
+    case CREATE:
       return [...state, action.payload];
 
-    case "DELETE":
+    case DELETE:
       return [...state].filter((el) => el.id != action.payload);
     default:
       return state;

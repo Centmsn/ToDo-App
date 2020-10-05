@@ -13,7 +13,7 @@
 
     @include mq("small") {
       flex-basis: 100%;
-      height: 115vh;
+      height: auto;
     }
   }
 
@@ -38,7 +38,6 @@
     max-width: 100vw;
     overflow-y: auto;
     max-height: 100vh;
-    height: 100vh;
   }
 
   &__item {

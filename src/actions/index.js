@@ -1,48 +1,56 @@
-const SHOW_NOTES = "SHOW_NOTES";
-const HIDE_NOTES = "HIDE_NOTES";
-const SHOW_SETTINGS = "SHOW_SETTINGS";
+export const SHOW_NOTES = "SHOW_NOTES";
+export const HIDE_NOTES = "HIDE_NOTES";
+export const SHOW_SETTINGS = "SHOW_SETTINGS";
+export const HIDE_SETTINGS = "HIDE_SETTINGS";
+export const SWITCH_MODE = "SWITCH_MODE";
+export const SWITCH_SIZE = "SWITCH_SIZE";
+export const CREATE = "CREATE";
+export const DELETE = "DELETE";
+export const INCREMENT = "INCREMENT";
+export const MOVE_TO_DONE = "MOVE_TO_DONE";
+export const MOVE_TO_REMOVED = "MOVE_TO_REMOVED";
 
 export const showCreateNote = () => {
   return {
-    type: "SHOW-NOTES",
+    type: SHOW_NOTES,
   };
 };
 
 export const hideCreateNote = () => {
   return {
-    type: "HIDE-NOTES",
+    type: HIDE_NOTES,
   };
 };
 
 export const showSettings = () => {
   return {
-    type: "SHOW-SETTINGS",
+    type: SHOW_SETTINGS,
   };
 };
 
 export const hideSettings = () => {
   return {
-    type: "HIDE-SETTINGS",
+    type: HIDE_SETTINGS,
   };
 };
 
 export const switchDarkMode = (value) => {
   return {
-    type: "SWITCH_MODE",
+    type: SWITCH_MODE,
     payload: value,
   };
 };
 
 export const switchFontSize = (size) => {
   return {
-    type: "SWITCH_SIZE",
+    type: SWITCH_SIZE,
     payload: size,
   };
 };
 
 export const createNote = (values) => {
   return {
-    type: "CREATE",
+    type: CREATE,
     payload: {
       title: values.title,
       desc: values.description,
@@ -55,20 +63,20 @@ export const createNote = (values) => {
 
 export const deleteNote = (index) => {
   return {
-    type: "DELETE",
+    type: DELETE,
     payload: index,
   };
 };
 
 export const incrementId = () => {
   return {
-    type: "INCREMENT",
+    type: INCREMENT,
   };
 };
 
 export const moveToRemoved = (values) => {
   return {
-    type: "MOVE_TO_REMOVED",
+    type: MOVE_TO_REMOVED,
     payload: {
       title: values.title,
       desc: values.desc,
@@ -78,7 +86,7 @@ export const moveToRemoved = (values) => {
 
 export const moveToDone = (values) => {
   return {
-    type: "MOVE_TO_DONE",
+    type: MOVE_TO_DONE,
     payload: {
       title: values.title,
       desc: values.desc,
