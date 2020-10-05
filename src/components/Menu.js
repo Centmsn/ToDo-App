@@ -34,6 +34,7 @@ const Menu = ({
       hideSettings();
     } else {
       hideCreateNote();
+      setTimeout(() => {}, 500);
     }
   };
 
@@ -55,24 +56,19 @@ const Menu = ({
 
   return (
     <div className="menu" style={style}>
-      <div className="menu__button menu__button--left">
+      <div className="menu__button--left">
         <NavLink to="/" className="menu__link" onClick={hideWindows} exact>
           <FontAwesomeIcon icon={faHome} />
         </NavLink>
       </div>
-      <div className="menu__button">
-        <NavLink
-          to="/settings"
-          className="menu__link"
-          onClick={handleSettingsVisiblity}
-        >
+      <div>
+        <button className="menu__link" onClick={handleSettingsVisiblity}>
           <FontAwesomeIcon icon={faCogs} />
-        </NavLink>
+        </button>
       </div>
-      <div className="menu__button menu__button--center" style={style}>
-        <NavLink
-          to="/CreateNote"
-          className="menu__link"
+      <div className="menu__button--center" style={style}>
+        <button
+          className="menu__link menu__link--large"
           onClick={handleCreateNoteVisiblity}
         >
           <FontAwesomeIcon
@@ -80,9 +76,9 @@ const Menu = ({
             style={iconStyle}
             className="menu__icon"
           />
-        </NavLink>
+        </button>
       </div>
-      <div className="menu__button">
+      <div>
         <NavLink to="/deleted" className="menu__link" onClick={hideWindows}>
           <FontAwesomeIcon icon={faTrashAlt} />
         </NavLink>

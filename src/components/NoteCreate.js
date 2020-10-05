@@ -8,7 +8,7 @@ import "../css/notecreate.css";
 class NoteCreate extends Component {
   handleVisibility = () => {
     if (this.props.isVisible === "HIDE") {
-      return { transform: "translateY(100vh)" };
+      return { transform: "translateY(100vh)", visibility: "hidden" };
     } else {
       return { transform: "translateY(0)" };
     }

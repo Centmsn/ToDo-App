@@ -1,5 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router";
+import { createRef } from "react";
 
 import TopBar from "./TopBar";
 import Menu from "./Menu";
@@ -7,9 +8,10 @@ import NotesContainer from "./NotesContainer";
 import RemovedNotes from "./RemovedNotes";
 import NoteCreate from "./NoteCreate";
 import Settings from "./Settings";
+
 import "../css/base.css";
 
-function App() {
+const App = () => {
   return (
     <div className="app-container">
       <TopBar />
@@ -22,6 +24,6 @@ function App() {
       <Menu />
     </div>
   );
-}
+};
 
 export default App;

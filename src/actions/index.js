@@ -1,3 +1,7 @@
+const SHOW_NOTES = "SHOW_NOTES";
+const HIDE_NOTES = "HIDE_NOTES";
+const SHOW_SETTINGS = "SHOW_SETTINGS";
+
 export const showCreateNote = () => {
   return {
     type: "SHOW-NOTES",

@@ -8,7 +8,7 @@ import "../css/settings.css";
 class Settings extends Component {
   handleVisibility = () => {
     if (this.props.isVisible === "HIDE") {
-      return { transform: "translateY(100vh)" };
+      return { transform: "translateY(100vh)", visibility: "hidden" };
     } else {
       return { transform: "translateY(0)" };
     }
@@ -91,15 +91,9 @@ const mapStateToProps = (state) => {
   };
 };
 
-const validate = () => {
-  const errors = {};
-  return errors;
-};
-
 const WrappedSettings = reduxForm({
   form: "settings",
   enableReinitialize: true,
-  validate,
 })(Settings);
 
 export default connect(mapStateToProps, {
