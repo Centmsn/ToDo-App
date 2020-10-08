@@ -1,9 +1,10 @@
 import React, { useRef } from "react";
-import { deleteNote, moveToDone, moveToRemoved } from "../actions";
+import { deleteNote, moveToDone, moveToRemoved, showEdit } from "../actions";
 import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { faPen } from "@fortawesome/free-solid-svg-icons";
 
 import "../css/note.css";
 
@@ -47,6 +48,13 @@ const Note = (props) => {
       <div className="note__top-bar">
         <div className="note__date">{`Created: ${props.date}`}</div>
 
+        <div className="note_edit">
+          <FontAwesomeIcon
+            icon={faPen}
+            className="note__icon"
+            onClick={props.showEdit}
+          />
+        </div>
         <div className="note__done">
           <FontAwesomeIcon
             icon={faCheck}
@@ -84,4 +92,5 @@ export default connect(mapStateToProps, {
   deleteNote,
   moveToDone,
   moveToRemoved,
+  showEdit,
 })(Note);

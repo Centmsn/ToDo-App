@@ -2,18 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import { createNote, hideCreateNote, incrementId } from "../actions";
+import { renderFormInput, handleVisibility } from "../helpers";
 
 import "../css/notecreate.css";
 
 class NoteCreate extends Component {
-  handleVisibility = () => {
-    if (this.props.isVisible === "HIDE") {
-      return { transform: "translateY(100vh)", visibility: "hidden" };
-    } else {
-      return { transform: "translateY(0)" };
-    }
-  };
-
   handleSubmit = (values) => {
     const { incrementId, reset, createNote, hideCreateNote, id } = this.props;
 
@@ -23,6 +16,10 @@ class NoteCreate extends Component {
     createNote(params);
     reset();
     hideCreateNote();
+  };
+
+  setVisbility = () => {
+    return handleVisibility(this.props.isVisible);
   };
 
   renderFormTextarea = (field) => {
@@ -42,62 +39,47 @@ class NoteCreate extends Component {
     );
   };
 
-  renderFormInput = (field) => {
-    return (
-      <>
-        <label className="note-create__form-label">
-          {field.label}
-          <input
-            type={field.type}
-            {...field.input}
-            className="note-create__form-input"
-            autoComplete="off"
-          />
-        </label>
-        {field.meta.touched ? (
-          <p className="note-create__error">{field.meta.error}</p>
-        ) : null}
-      </>
-    );
-  };
-
   render() {
     const style = this.props.darkmode ? { backgroundColor: "gray" } : null;
 
     return (
-      <div className="note-create" style={this.handleVisibility()}>
+      <div className="note-create" style={this.setVisbility()}>
         <div className="note-create__form-container" style={style}>
           <form onSubmit={this.props.handleSubmit(this.handleSubmit)}>
             <p className="note-create__title">Select note color</p>
             <div className="note-create__form-field note-create__form-field--flex">
               <Field
                 name="color"
-                component={this.renderFormInput}
+                component={renderFormInput}
                 type="radio"
                 label="Red"
                 value="rgb(209, 63, 63)"
+                className="note-create"
               />
               <Field
                 name="color"
-                component={this.renderFormInput}
+                component={renderFormInput}
                 type="radio"
                 label="Green"
                 value="rgb(99, 170, 84)"
+                className="note-create"
               />
               <Field
                 name="color"
-                component={this.renderFormInput}
+                component={renderFormInput}
                 type="radio"
                 label="Yellow"
                 value="rgb(252, 219, 111)"
+                className="note-create"
               />
             </div>
             <div className="note-create__form-field">
               <Field
                 name="title"
-                component={this.renderFormInput}
+                component={renderFormInput}
                 type="text"
                 label="Note title"
+                className="note-create"
               />
             </div>
             <div className="note-create__form-field">

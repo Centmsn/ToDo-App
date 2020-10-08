@@ -2,10 +2,13 @@ export const SHOW_NOTES = "SHOW_NOTES";
 export const HIDE_NOTES = "HIDE_NOTES";
 export const SHOW_SETTINGS = "SHOW_SETTINGS";
 export const HIDE_SETTINGS = "HIDE_SETTINGS";
+export const SHOW_EDIT = "SHOW_EDIT";
+export const HIDE_EDIT = "HIDE_EDIT";
 export const SWITCH_MODE = "SWITCH_MODE";
 export const SWITCH_SIZE = "SWITCH_SIZE";
 export const CREATE = "CREATE";
 export const DELETE = "DELETE";
+export const EDIT = "EDIT";
 export const INCREMENT = "INCREMENT";
 export const MOVE_TO_DONE = "MOVE_TO_DONE";
 export const MOVE_TO_REMOVED = "MOVE_TO_REMOVED";
@@ -31,6 +34,18 @@ export const showSettings = () => {
 export const hideSettings = () => {
   return {
     type: HIDE_SETTINGS,
+  };
+};
+
+export const showEdit = () => {
+  return {
+    type: SHOW_EDIT,
+  };
+};
+
+export const hideEdit = () => {
+  return {
+    type: HIDE_EDIT,
   };
 };
 
@@ -65,6 +80,17 @@ export const deleteNote = (index) => {
   return {
     type: DELETE,
     payload: index,
+  };
+};
+
+export const editNote = (values, index) => {
+  return {
+    type: EDIT,
+    payload: {
+      title: values.title,
+      desc: values.desc,
+      index,
+    },
   };
 };
 

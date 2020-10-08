@@ -1,0 +1,6 @@
+@import "./helpers/variables";
+@import "./helpers/mixins";
+
+.note-edit {
+  @include container(rgba(0, 0, 0, 0.705));
+}

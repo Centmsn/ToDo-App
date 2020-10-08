@@ -3,17 +3,7 @@
 @import "./components/button";
 
 .note-create {
-  position: absolute;
-  top: 10vh;
-  width: 100vw;
-  height: 78vh;
-  transition: 500ms;
-  transform: translateY(-100vh);
-  background-color: rgba(0, 0, 0, 0.705);
-
-  display: flex;
-  flex-wrap: wrap;
-
+  @include container(rgba(0, 0, 0, 0.705));
   &__form-container {
     height: 100%;
     width: 40%;

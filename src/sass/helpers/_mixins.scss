@@ -8,3 +8,16 @@
     }
   }
 }
+
+@mixin container($color) {
+  position: absolute;
+  top: 10vh;
+  width: 100vw;
+  height: 78vh;
+  transition: 500ms;
+  transform: translateY(-100vh);
+  background-color: $color;
+
+  display: flex;
+  justify-content: center;
+}

@@ -2,16 +2,7 @@
 @import "./helpers/mixins";
 
 .settings {
-  position: absolute;
-  top: 10vh;
-  width: 100vw;
-  height: 78vh;
-  transition: 500ms;
-  transform: translateY(-100vh);
-  background-color: rgba(0, 0, 0, 0.705);
-
-  display: flex;
-  justify-content: center;
+  @include container(rgba(0, 0, 0, 0.705));
 
   &__options-container {
     flex-basis: 35%;
@@ -38,7 +29,7 @@
     justify-content: center;
   }
 
-  &__label {
+  &__form-label {
     flex-basis: 33%;
     font-size: 1.25rem;
   }
@@ -49,7 +40,7 @@
     font-size: 1.5rem;
   }
 
-  &__input {
+  &__form-input {
     display: block;
     margin: 0 auto;
   }

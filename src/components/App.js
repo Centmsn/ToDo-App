@@ -10,6 +10,7 @@ import NoteCreate from "./NoteCreate";
 import Settings from "./Settings";
 
 import "../css/base.css";
+import NoteEdit from "./NoteEdit";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
       </Switch>
       <NoteCreate component={NoteCreate} />
       <Settings component={Settings} />
+      <NoteEdit component={NoteEdit} />
       <Menu />
     </div>
   );

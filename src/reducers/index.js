@@ -2,21 +2,23 @@ import { combineReducers } from "redux";
 import { reducer as FormReducer } from "redux-form";
 
 import createNoteVisibilityReducer from "./createNoteVisibilityReducer";
+import doneNotesReducer from "./doneNotesReducer";
+import editNoteVisibilityReducer from "./editNoteVisibilityReducer";
 import notesReducer from "./notesReducer";
-import settingsReducer from "./settingsReducer";
-import settingsVisibility from "./settingsVisibilityReducer";
 import noteIdReducer from "./noteIdReducer";
 import removedNotesReducer from "./removedNotesReducer";
-import doneNotesReducer from "./doneNotesReducer";
+import settingsReducer from "./settingsReducer";
+import settingsVisibility from "./settingsVisibilityReducer";
 
 export default combineReducers({
-  notesList: notesReducer,
-  settingsList: settingsReducer,
-  notesMenu: createNoteVisibilityReducer,
-  settings: settingsVisibility,
-  removedNotes: removedNotesReducer,
+  editList: editNoteVisibilityReducer,
   doneNotes: doneNotesReducer,
   id: noteIdReducer,
+  notesList: notesReducer,
+  notesMenu: createNoteVisibilityReducer,
+  removedNotes: removedNotesReducer,
+  settingsList: settingsReducer,
+  settings: settingsVisibility,
 
   form: FormReducer,
 });
