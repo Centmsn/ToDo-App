@@ -1,17 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { faCogs } from "@fortawesome/free-solid-svg-icons";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
-
 import {
   showCreateNote,
   hideCreateNote,
   showSettings,
   hideSettings,
+  hideEdit,
 } from "../actions";
 
 import "../css/menu.css";
@@ -23,6 +24,7 @@ const Menu = ({
   hideCreateNote,
   showSettings,
   hideSettings,
+  hideEdit,
   darkmode,
 }) => {
   const iconStyle =
@@ -32,6 +34,7 @@ const Menu = ({
     if (createNoteVisiblity === "HIDE") {
       showCreateNote();
       hideSettings();
+      hideEdit();
     } else {
       hideCreateNote();
       setTimeout(() => {}, 500);
@@ -42,6 +45,7 @@ const Menu = ({
     if (settingsVisibility === "HIDE") {
       showSettings();
       hideCreateNote();
+      hideEdit();
     } else {
       hideSettings();
     }
@@ -50,6 +54,7 @@ const Menu = ({
   const hideWindows = () => {
     hideSettings();
     hideCreateNote();
+    hideEdit();
   };
 
   const style = darkmode ? { backgroundColor: "lightgray" } : null;
@@ -100,4 +105,5 @@ export default connect(mapStateToProps, {
   hideCreateNote,
   showSettings,
   hideSettings,
+  hideEdit,
 })(Menu);

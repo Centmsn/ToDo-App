@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+
 import "../css/removednotes.css";
 
 const RemovedNotes = ({ removed, done, darkmode, font }) => {

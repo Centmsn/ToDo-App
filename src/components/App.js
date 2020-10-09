@@ -1,16 +1,15 @@
 import React from "react";
 import { Switch, Route } from "react-router";
-import { createRef } from "react";
 
-import TopBar from "./TopBar";
 import Menu from "./Menu";
+import NoteEdit from "./NoteEdit";
 import NotesContainer from "./NotesContainer";
-import RemovedNotes from "./RemovedNotes";
 import NoteCreate from "./NoteCreate";
+import RemovedNotes from "./RemovedNotes";
 import Settings from "./Settings";
+import TopBar from "./TopBar";
 
 import "../css/base.css";
-import NoteEdit from "./NoteEdit";
 
 const App = () => {
   return (

@@ -8,16 +8,16 @@ export default (state = INITIAL_STATE, action) => {
       return [...state, action.payload];
 
     case DELETE:
-      return [...state].filter((el) => el.id != action.payload);
+      return [...state].filter((el) => el.id !== parseInt(action.payload, 10));
 
     case EDIT:
-      const note = [...state][action.payload.index];
-      note.title = action.payload.title;
-      note.desc = action.payload.desc;
+      const note = [...state].filter((el) => el.id === action.payload.id);
 
-      const newState = [...state].splice(action.payload.index, 1);
+      note[0].title = action.payload.title;
+      note[0].desc = action.payload.desc;
 
-      return [...newState, note];
+      return [...state];
+
     default:
       return state;
   }

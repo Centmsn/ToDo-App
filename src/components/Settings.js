@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
+
 import { hideSettings, switchDarkMode, switchFontSize } from "../actions";
 import { handleVisibility, renderFormInput } from "../helpers";
 

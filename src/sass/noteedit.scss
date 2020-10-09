@@ -1,6 +1,23 @@
 @import "./helpers/variables";
 @import "./helpers/mixins";
+@import "./components/button";
 
 .note-edit {
   @include container(rgba(0, 0, 0, 0.705));
+
+  &__form {
+    flex-basis: 35%;
+    background-color: white;
+
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__input {
+    flex-basis: 75%;
+  }
+
+  &__label {
+    font-size: 2rem;
+  }
 }

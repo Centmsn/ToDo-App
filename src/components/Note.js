@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
-import { deleteNote, moveToDone, moveToRemoved, showEdit } from "../actions";
 import { connect } from "react-redux";
+
+import { deleteNote, moveToDone, moveToRemoved, showEdit } from "../actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
@@ -52,7 +53,7 @@ const Note = (props) => {
           <FontAwesomeIcon
             icon={faPen}
             className="note__icon"
-            onClick={props.showEdit}
+            onClick={() => props.showEdit(props.id)}
           />
         </div>
         <div className="note__done">
