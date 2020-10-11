@@ -3,7 +3,11 @@ import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 
 import { createNote, hideCreateNote, incrementId } from "../actions";
-import { renderFormInput, handleVisibility } from "../helpers";
+import {
+  renderFormInput,
+  handleVisibility,
+  renderFormTextarea,
+} from "../helpers";
 
 import "../css/notecreate.css";
 
@@ -21,23 +25,6 @@ class NoteCreate extends Component {
 
   setVisbility = () => {
     return handleVisibility(this.props.isVisible);
-  };
-
-  renderFormTextarea = (field) => {
-    return (
-      <>
-        <label className="note-create__form-label">
-          {field.label}
-          <textarea
-            {...field.input}
-            className="note-create__form-input note-create__form-input--large"
-          />
-        </label>
-        {field.meta.touched ? (
-          <p className="note-create__error">{field.meta.error}</p>
-        ) : null}
-      </>
-    );
   };
 
   render() {
@@ -86,8 +73,9 @@ class NoteCreate extends Component {
             <div className="note-create__form-field">
               <Field
                 name="description"
-                component={this.renderFormTextarea}
+                component={renderFormTextarea}
                 label="Note description"
+                className="note-create"
               />
             </div>
             <button type="submit" className="button">

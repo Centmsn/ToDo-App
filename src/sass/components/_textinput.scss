@@ -1,0 +1,14 @@
+%input {
+  display: block;
+  margin: 0 auto;
+  width: 75%;
+  font-size: 1.3rem;
+  border-radius: 5px;
+  padding: 5px 10px;
+  border: 2px solid black;
+}
+
+%textarea {
+  height: 250px;
+  resize: none;
+}

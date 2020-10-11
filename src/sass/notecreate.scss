@@ -1,6 +1,7 @@
 @import "./helpers/variables";
 @import "./helpers/mixins";
 @import "./components/button";
+@import "./components/textinput";
 
 .note-create {
   @include container(rgba(0, 0, 0, 0.705));
@@ -36,18 +37,11 @@
   }
 
   &__form-input {
-    display: block;
-    margin: 0 auto;
-    width: 75%;
-    font-size: 1.3rem;
-    border-radius: 5px;
-    padding: 5px 10px;
-    border: 2px solid black;
+    @extend %input;
   }
 
   &__form-input--large {
-    height: 250px;
-    resize: none;
+    @extend %textarea;
   }
 
   &__form-label {

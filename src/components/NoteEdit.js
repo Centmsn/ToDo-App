@@ -1,13 +1,24 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Field, reduxForm } from "redux-form";
+import { Field, reduxForm, reset } from "redux-form";
 
 import { editNote, hideEdit } from "../actions";
-import { renderFormInput, handleVisibility } from "../helpers";
+import {
+  renderFormInput,
+  handleVisibility,
+  renderFormTextarea,
+} from "../helpers";
 
 import "../css/noteedit.css";
 
-const NoteEdit = ({ isVisible, editNote, handleSubmit, hideEdit, id }) => {
+const NoteEdit = ({
+  isVisible,
+  editNote,
+  handleSubmit,
+  hideEdit,
+  id,
+  note,
+}) => {
   const setVisibility = () => {
     return handleVisibility(isVisible);
   };
@@ -17,12 +28,13 @@ const NoteEdit = ({ isVisible, editNote, handleSubmit, hideEdit, id }) => {
 
     editNote(params);
 
+    reset();
     hideEdit();
   };
 
   const onReject = (e) => {
     e.preventDefault();
-
+    console.log(note);
     hideEdit();
   };
 
@@ -36,16 +48,18 @@ const NoteEdit = ({ isVisible, editNote, handleSubmit, hideEdit, id }) => {
             type="text"
             name="title"
             value="title"
+            className="note-edit"
           />
           <Field
-            component={renderFormInput}
+            component={renderFormTextarea}
             label="description"
             type="text"
             name="desc"
             value="desc"
+            className="note-edit"
           />
           <button className="button">Save changes</button>
-          <button className="button" onClick={onReject}>
+          <button className="button button--red" onClick={onReject}>
             Discard changes
           </button>
         </form>
@@ -54,16 +68,33 @@ const NoteEdit = ({ isVisible, editNote, handleSubmit, hideEdit, id }) => {
   );
 };
 
-const validate = () => {
+const validate = (values) => {
   const errors = {};
+
+  if (!values.title) {
+    errors.title = "Enter note title";
+  }
+
+  if (!values.desc) {
+    errors.desc = "Enter note description";
+  }
 
   return errors;
 };
 
 const mapStateToProps = (state) => {
+  const note = state.notesList.filter((note) => note.id === state.editList.id);
+
+  let title = "e";
+  let noteDesc = "";
+  if (note.length === 1) {
+    title = note[0].title;
+    noteDesc = note[0].desc;
+  }
   return {
     isVisible: state.editList.visibility,
     id: state.editList.id,
+    initialValues: { title, desc: "abcabc" },
   };
 };
 

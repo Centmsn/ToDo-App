@@ -18,6 +18,10 @@
     margin: 20px auto 0 auto;
   }
 
+  &--red {
+    background-color: $red-color;
+  }
+
   &:hover {
     background-color: black;
     color: white;

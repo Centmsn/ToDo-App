@@ -19,6 +19,23 @@ export const renderFormInput = (field) => {
   );
 };
 
+export const renderFormTextarea = (field) => {
+  return (
+    <>
+      <label className={`${field.className}__form-label`}>
+        {field.label}
+        <textarea
+          {...field.input}
+          className={`${field.className}__form-input ${field.className}__form-input--large`}
+        />
+      </label>
+      {field.meta.touched ? (
+        <p className={`${field.className}__error`}>{field.meta.error}</p>
+      ) : null}
+    </>
+  );
+};
+
 export const handleVisibility = (visibility) => {
   if (visibility === "HIDE") {
     return { transform: "translateY(100vh)", visibility: "hidden" };
