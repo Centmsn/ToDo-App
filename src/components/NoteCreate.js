@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import { useHistory } from "react-router-dom";
@@ -8,12 +8,14 @@ import {
   renderFormInput,
   handleVisibility,
   renderFormTextarea,
+  closeForm,
 } from "../helpers";
 
 import "../css/notecreate.css";
 
 const NoteCreate = (props) => {
   const history = useHistory();
+  const formContainer = useRef();
   const handleSubmit = (values) => {
     const { incrementId, reset, createNote, hideCreateNote, id } = props;
 
@@ -33,8 +35,16 @@ const NoteCreate = (props) => {
   const style = props.darkmode ? { backgroundColor: "gray" } : null;
 
   return (
-    <div className="note-create" style={setVisbility()}>
-      <div className="note-create__form-container" style={style}>
+    <div
+      className="note-create"
+      style={setVisbility()}
+      onClick={(e) => closeForm(e, formContainer, props.hideCreateNote)}
+    >
+      <div
+        className="note-create__form-container"
+        style={style}
+        ref={formContainer}
+      >
         <form onSubmit={props.handleSubmit(handleSubmit)}>
           <p className="note-create__title">Select note color</p>
           <div className="note-create__form-field note-create__form-field--flex">

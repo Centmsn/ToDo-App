@@ -43,3 +43,13 @@ export const handleVisibility = (visibility) => {
     return { transform: "translateY(0)" };
   }
 };
+
+export const closeForm = (e, form, clb) => {
+  const formWidth = form.current.clientWidth;
+  if (
+    e.clientX < (window.innerWidth - formWidth) / 2 ||
+    e.clientX > (window.innerWidth - formWidth) / 2 + formWidth
+  ) {
+    clb();
+  }
+};
