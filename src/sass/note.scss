@@ -39,20 +39,28 @@
   }
 
   &__date {
-    flex-basis: 75%;
+    flex-basis: 70%;
     color: rgb(46, 46, 46);
   }
 
   &__delete,
-  &__done {
-    flex-basis: 9%;
+  &__done,
+  &__edit {
+    flex-basis: 5%;
     font-size: 1.5rem;
 
     &:hover {
       &::before {
         position: absolute;
         font-size: 1rem;
-        content: "delete note";
+        transform: translateY(-200%);
+        z-index: 999;
+
+        background-color: $gray-color;
+        color: white;
+        border-radius: 5px;
+        padding: 5px;
+        content: "";
       }
     }
   }
@@ -60,8 +68,16 @@
   &__done {
     &:hover {
       &::before {
-        transform: translateX(-125%);
         content: "task done";
+      }
+    }
+  }
+
+  &__edit {
+    font-size: 1.25rem;
+    &:hover {
+      &::before {
+        content: "edit task";
       }
     }
   }
@@ -69,7 +85,6 @@
   &__delete {
     &:hover {
       &::before {
-        transform: translateX(-200%);
         content: "delete task";
       }
     }
@@ -77,7 +92,6 @@
 
   &__icon {
     cursor: pointer;
-
     &:hover {
       color: $main-color;
     }

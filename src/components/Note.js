@@ -49,7 +49,7 @@ const Note = (props) => {
       <div className="note__top-bar">
         <div className="note__date">{`Created: ${props.date}`}</div>
 
-        <div className="note_edit">
+        <div className="note__edit">
           <FontAwesomeIcon
             icon={faPen}
             className="note__icon"
