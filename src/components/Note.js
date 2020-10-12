@@ -53,7 +53,9 @@ const Note = (props) => {
           <FontAwesomeIcon
             icon={faPen}
             className="note__icon"
-            onClick={() => props.showEdit(props.id)}
+            onClick={() =>
+              props.showEdit(props.id, props.title, props.description)
+            }
           />
         </div>
         <div className="note__done">

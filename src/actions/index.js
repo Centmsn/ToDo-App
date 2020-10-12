@@ -37,10 +37,14 @@ export const hideSettings = () => {
   };
 };
 
-export const showEdit = (id) => {
+export const showEdit = (id, title, desc) => {
   return {
     type: SHOW_EDIT,
-    payload: id,
+    payload: {
+      id,
+      title,
+      desc,
+    },
   };
 };
 

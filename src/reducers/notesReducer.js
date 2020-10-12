@@ -11,7 +11,10 @@ export default (state = INITIAL_STATE, action) => {
       return [...state].filter((el) => el.id !== parseInt(action.payload, 10));
 
     case EDIT:
-      const note = [...state].filter((el) => el.id === action.payload.id);
+      const note = [...state].filter(
+        (el) => el.id === parseInt(action.payload.id)
+      );
+      console.log(note, action.payload);
 
       note[0].title = action.payload.title;
       note[0].desc = action.payload.desc;

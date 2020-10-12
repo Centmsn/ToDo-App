@@ -17,13 +17,14 @@ const NoteEdit = ({
   handleSubmit,
   hideEdit,
   id,
-  note,
+  title,
 }) => {
   const setVisibility = () => {
     return handleVisibility(isVisible);
   };
 
   const oNSubmit = (values) => {
+    console.log(id);
     const params = { desc: values.desc, title: values.title, id };
 
     editNote(params);
@@ -34,7 +35,6 @@ const NoteEdit = ({
 
   const onReject = (e) => {
     e.preventDefault();
-    console.log(note);
     hideEdit();
   };
 
@@ -48,6 +48,7 @@ const NoteEdit = ({
             type="text"
             name="title"
             value="title"
+            initialValues={title}
             className="note-edit"
           />
           <Field
@@ -83,22 +84,18 @@ const validate = (values) => {
 };
 
 const mapStateToProps = (state) => {
-  const note = state.notesList.filter((note) => note.id === state.editList.id);
-
-  let title = "e";
-  let noteDesc = "";
-  if (note.length === 1) {
-    title = note[0].title;
-    noteDesc = note[0].desc;
-  }
   return {
     isVisible: state.editList.visibility,
     id: state.editList.id,
-    initialValues: { title, desc: "abcabc" },
+    initialValues: { title: state.editList.title, desc: state.editList.desc },
   };
 };
 
-const WrappedNoteEdit = reduxForm({ form: "noteEdit", validate })(NoteEdit);
+const WrappedNoteEdit = reduxForm({
+  form: "noteEdit",
+  enableReinitialize: true,
+  validate,
+})(NoteEdit);
 
 export default connect(mapStateToProps, { editNote, hideEdit })(
   WrappedNoteEdit
