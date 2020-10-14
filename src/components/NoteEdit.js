@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm, reset } from "redux-form";
 
@@ -7,6 +7,7 @@ import {
   renderFormInput,
   handleVisibility,
   renderFormTextarea,
+  closeForm,
 } from "../helpers";
 
 import "../css/noteedit.css";
@@ -18,7 +19,10 @@ const NoteEdit = ({
   hideEdit,
   id,
   title,
+  notes,
 }) => {
+  const formContainer = useRef();
+
   const setVisibility = () => {
     return handleVisibility(isVisible);
   };
@@ -28,6 +32,11 @@ const NoteEdit = ({
     const params = { desc: values.desc, title: values.title, id };
 
     editNote(params);
+    localStorage.clear();
+
+    notes.forEach((note) => {
+      localStorage.setItem(note.id, JSON.stringify(note));
+    });
 
     reset();
     hideEdit();
@@ -39,8 +48,12 @@ const NoteEdit = ({
   };
 
   return (
-    <div className="note-edit" style={setVisibility()}>
-      <div className="note-edit__form">
+    <div
+      className="note-edit"
+      style={setVisibility()}
+      onClick={(e) => closeForm(e, formContainer, hideEdit)}
+    >
+      <div className="note-edit__form" ref={formContainer}>
         <form onSubmit={handleSubmit(oNSubmit)}>
           <Field
             component={renderFormInput}
@@ -86,6 +99,7 @@ const validate = (values) => {
 const mapStateToProps = (state) => {
   return {
     isVisible: state.editList.visibility,
+    notes: state.notesList,
     id: state.editList.id,
     initialValues: { title: state.editList.title, desc: state.editList.desc },
   };
