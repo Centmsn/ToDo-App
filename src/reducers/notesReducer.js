@@ -1,6 +1,6 @@
 import { CREATE, DELETE, EDIT } from "../actions";
 
-const getStorage = () => {
+const setInitialValue = () => {
   const initalValue = [];
   const keys = Object.keys(localStorage);
 
@@ -11,7 +11,7 @@ const getStorage = () => {
   return initalValue;
 };
 
-const INITIAL_STATE = localStorage.length > 0 ? getStorage() : [];
+const INITIAL_STATE = localStorage.length > 0 ? setInitialValue() : [];
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Field, reduxForm, reset } from "redux-form";
 
 import { editNote, hideEdit } from "../actions";
+import { darkModeBg } from "../helpers/consts";
 import {
   renderFormInput,
   handleVisibility,
@@ -20,6 +21,7 @@ const NoteEdit = ({
   id,
   title,
   notes,
+  darkmode,
 }) => {
   const formContainer = useRef();
 
@@ -53,7 +55,11 @@ const NoteEdit = ({
       style={setVisibility()}
       onClick={(e) => closeForm(e, formContainer, hideEdit)}
     >
-      <div className="note-edit__form" ref={formContainer}>
+      <div
+        className="note-edit__form"
+        ref={formContainer}
+        style={darkmode ? { backgroundColor: darkModeBg } : null}
+      >
         <form onSubmit={handleSubmit(oNSubmit)}>
           <Field
             component={renderFormInput}
@@ -102,6 +108,7 @@ const mapStateToProps = (state) => {
     notes: state.notesList,
     id: state.editList.id,
     initialValues: { title: state.editList.title, desc: state.editList.desc },
+    darkmode: state.settingsList.darkmode,
   };
 };
 

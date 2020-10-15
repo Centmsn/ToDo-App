@@ -2,12 +2,14 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 
+import { darkModeBgMenu } from "../helpers/consts";
+
 import "../css/topbar.css";
 
 const TopBar = ({ darkmode }) => {
   const [currentTime, setCurrentTime] = useState(null);
 
-  const style = darkmode ? { backgroundColor: "lightgray" } : null;
+  const style = darkmode ? { backgroundColor: darkModeBgMenu } : null;
 
   useEffect(() => {
     setInterval(() => {

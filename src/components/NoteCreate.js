@@ -4,6 +4,7 @@ import { Field, reduxForm } from "redux-form";
 import { useHistory } from "react-router-dom";
 
 import { createNote, hideCreateNote, incrementId } from "../actions";
+import { darkModeBg } from "../helpers/consts";
 import {
   renderFormInput,
   handleVisibility,
@@ -32,7 +33,7 @@ const NoteCreate = (props) => {
     return handleVisibility(props.isVisible);
   };
 
-  const style = props.darkmode ? { backgroundColor: "gray" } : null;
+  const style = props.darkmode ? { backgroundColor: darkModeBg } : null;
 
   return (
     <div

@@ -14,6 +14,7 @@ import {
   hideSettings,
   hideEdit,
 } from "../actions";
+import { darkModeBgMenu } from "../helpers/consts";
 
 import "../css/menu.css";
 
@@ -57,7 +58,7 @@ const Menu = ({
     hideEdit();
   };
 
-  const style = darkmode ? { backgroundColor: "lightgray" } : null;
+  const style = darkmode ? { backgroundColor: darkModeBgMenu } : null;
 
   return (
     <div className="menu" style={style}>

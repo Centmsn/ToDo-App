@@ -4,6 +4,7 @@ import { Field, reduxForm } from "redux-form";
 
 import { hideSettings, switchDarkMode, switchFontSize } from "../actions";
 import { handleVisibility, renderFormInput, closeForm } from "../helpers";
+import { darkModeBg } from "../helpers/consts";
 
 import "../css/settings.css";
 
@@ -21,14 +22,12 @@ const Settings = ({
   };
 
   const onSubmit = (values) => {
-    // localStorage.setItem("darkmode", `${values.darkMode}`);
-    // localStorage.setItem("fontsize", `${values.fontSize}`);
     switchDarkMode(values.darkMode);
     switchFontSize(values.fontSize);
     hideSettings();
   };
 
-  const style = darkmode ? { backgroundColor: "gray" } : null;
+  const style = darkmode ? { backgroundColor: darkModeBg } : null;
 
   return (
     <div
